@@ -11,7 +11,7 @@ class mentorados(View):
     
     def get(self, request):
         if not request.user.is_authenticated:
-            return redirect('login')
+            return redirect('cadastro')
         
         estagios = Mentorados.estagio_choices
         navigators = Navigators.objects.filter(user=request.user)
@@ -22,7 +22,7 @@ class mentorados(View):
     def post(self, request):
         
         if not request.user.is_authenticated:
-            return redirect('login')
+            return redirect('cadastro')
         
         nome = request.POST.get('nome')
         foto = request.FILES.get('foto')
